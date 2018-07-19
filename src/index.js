@@ -16,7 +16,7 @@ const displayMovies = () => {
     $('#movies').html('Loading...');
     getMovies().then((movies) => {
         console.log('Here are all the movies:');
-        console.log(typeof movies);
+        console.log(movies);
         movies.forEach(({title, rating, id}) => {
             moviesAry.push(`<h3>id#${id} - ${title} - rating: ${rating}</h3>`);
         });
@@ -26,6 +26,22 @@ const displayMovies = () => {
         console.log(error);
     });
 };
-// $('form').submit(()=> event.preventDefault());
+$('form').submit(()=> event.preventDefault());
 displayMovies();
 
+const newMovie = {title: $('#title').val(), rating: $('#rating').val()};
+const url = '/api/movies';
+const options = {
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+	},
+	body: JSON.stringify(newMovie),
+};
+
+fetch(url, options)
+.then()
+.catch((error) => {
+	alert('Oh no! Something went wrong.\nCheck the console for details.')
+	console.log(error);
+});

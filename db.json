@@ -17,7 +17,18 @@
     },
     {
       "title": "",
+      "rating": null,
       "id": 4
+    },
+    {
+      "title": "movie",
+      "rating": "1",
+      "id": 5
+    },
+    {
+      "title": "movie",
+      "rating": "1",
+      "id": 6
     }
   ]
 }
