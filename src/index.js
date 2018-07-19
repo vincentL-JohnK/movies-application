@@ -18,7 +18,7 @@ const displayMovies = () => {
         console.log('Here are all the movies:');
         console.log(movies);
         movies.forEach(({title, rating, id}) => {
-            moviesAry.push(`<h3>id#${id} - ${title} - rating: ${rating}</h3>`);
+            moviesAry.push(`<h3>id#${id} - ${title} - rating: ${rating}<button id="edit${id}"></button></button></h3>`);
         });
         $('#movies').html(moviesAry);
     }).catch((error) => {
