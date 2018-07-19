@@ -9,6 +9,15 @@
       "title": "Star Wars: A New Hope",
       "rating": "5",
       "id": 2
+    },
+    {
+      "title": "Bill and Ted excellent adventure",
+      "rating": "3",
+      "id": 3
+    },
+    {
+      "title": "",
+      "id": 4
     }
   ]
 }
