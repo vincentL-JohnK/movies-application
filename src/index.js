@@ -18,7 +18,7 @@ const displayMovies = () => {
         console.log('Here are all the movies:');
         console.log(movies);
         movies.forEach(({title, rating, id}) => {
-            moviesAry.push(`<h3>id#${id} - ${title} - rating: ${rating}</h3>`);
+            moviesAry.push(`<div class="test"><h3>id#${id} - ${title} - rating: ${rating}</h3><form><button>edit</button><button>delete</button></form></div>`);
         });
         $('#movies').html(moviesAry);
     }).catch((error) => {
@@ -51,10 +51,10 @@ const addNew = () => {
 };
 
 
-
 $('#postMovie').click((e)=>{
     e.preventDefault();
     addNew();
     console.log('after click', getMovies());
     displayMovies();
 });
+

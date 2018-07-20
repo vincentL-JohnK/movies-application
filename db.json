@@ -32,6 +32,11 @@
       "title": "The Borne Identity",
       "rating": "4",
       "id": 7
+    },
+    {
+      "title": "new movie",
+      "rating": "3",
+      "id": 8
     }
   ]
 }
