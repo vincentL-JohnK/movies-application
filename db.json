@@ -9,37 +9,6 @@
       "title": "Star Wars: A New Hope",
       "rating": "5",
       "id": 2
-    },
-    {
-      "title": "Bill and Ted excellent adventure",
-      "rating": "3",
-      "id": 3
-<<<<<<< HEAD
-    },
-    {
-      "id": 4
-    },
-    {
-      "title": "The Matrix",
-      "rating": "4",
-      "id": 5
-    },
-    {
-      "title": "Bill and Ted excellent adventure",
-      "rating": "3",
-      "id": 6
-    },
-    {
-      "title": "The Borne Identity",
-      "rating": "4",
-      "id": 7
-    },
-    {
-      "title": "new movie",
-      "rating": "3",
-      "id": 8
-=======
->>>>>>> b681b6c2d96ade80451c9b622916e5cb7472ee36
     }
   ]
 }
