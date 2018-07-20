@@ -11,8 +11,24 @@ sayHello('World');
  */
 const {getMovies} = require('./api.js');
 
-const {deleteMovie} = require('./functions.js');
-
+// const {deleteMovie} = require('./functions.js');
+const deleteMovie = (number) => {
+	console.log(number);
+	const url = `/api/movies/${number}`;
+	const options = {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: "",
+	};
+	fetch(url, options)
+	.then(displayMovies)
+	.catch((error) => {
+		alert('Oh no! Something went wrong.\nCheck the console for details.')
+		console.log(error);
+	})
+};
 const displayMovies = () => {
     let moviesAry = [];
     $('#movies').html('Loading...');
@@ -20,9 +36,16 @@ const displayMovies = () => {
         console.log('Here are all the movies:');
         console.log(movies);
         movies.forEach(({title, rating, id}) => {
-            moviesAry.push(`<div class="test"><h3>id#${id} - ${title} - rating: ${rating}</h3><button>edit</button><button onclick="deleteMovie(${id})">delete</button></div>`);
+            moviesAry.push(`<div class="test"><h3>id#${id} - ${title} - rating: ${rating}</h3><button>edit</button><button id="deleteBtn${id}">delete</button></div>`);
         });
         $('#movies').html(moviesAry);
+        movies.forEach(({id}) => {
+	        $(`#deleteBtn${id}`).click(()=>{
+		        console.log(id);
+		        deleteMovie(id);
+	        });
+        });
+
     }).catch((error) => {
         alert('Oh no! Something went wrong.\nCheck the console for details.')
         console.log(error);
@@ -43,7 +66,7 @@ const addNew = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMovies),
-    }
+    };
     fetch(url, options)
         .then(response => response.json())
         .catch((error) => {
@@ -61,15 +84,12 @@ $('#postMovie').click((e)=>{
     displayMovies();
 });
 
-$('#editBtn').click((e)=>{
-    e.preventDefault();
-    addNew();
-    console.log('after click', getMovies());
-    displayMovies();
-});
-$('#deleteBtn').click((e)=>{
-    e.preventDefault();
-    deleteMovie(3);
-    console.log('after click', getMovies());
-    displayMovies();
+// $('#editBtn').click((e)=>{
+//     e.preventDefault();
+//     addNew();
+//     console.log('after click', getMovies());
+//     displayMovies();
+// });
+$('#thing').click(()=>{
+     deleteMovie(3);
 });
