@@ -29,23 +29,32 @@ const displayMovies = () => {
 $('form').submit(()=> event.preventDefault());
 displayMovies();
 
-const url = '/api/movies';
-const options = {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json',
-	},
-    body: {
-        title: $('#title').val(),
-        rating: $('#rating').val()
+
+const addNew = () => {
+    const newMovies = {title: $('#title').val(), rating: $('#rating').val()};
+    console.log(newMovies);
+    const url = '/api/movies';
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMovies),
     }
+    fetch(url, options)
+        .then(response => response.json())
+        .then()
+        .catch((error) => {
+            alert('Oh no! Something went wrong.\nCheck the console for details.')
+            console.log(error);
+        })
 };
 
-$('#postMovie').click(()=>{
-fetch(url, options)
-.then(() => displayMovies())
-.catch((error) => {
-	alert('Oh no! Something went wrong.\nCheck the console for details.')
-	console.log(error);
-    })
+
+
+$('#postMovie').click((e)=>{
+    e.preventDefault();
+    addNew();
+    console.log('after click', getMovies());
+    displayMovies();
 });
