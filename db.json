@@ -14,6 +14,7 @@
       "title": "Bill and Ted excellent adventure",
       "rating": "3",
       "id": 3
+<<<<<<< HEAD
     },
     {
       "id": 4
@@ -37,6 +38,8 @@
       "title": "new movie",
       "rating": "3",
       "id": 8
+=======
+>>>>>>> b681b6c2d96ade80451c9b622916e5cb7472ee36
     }
   ]
 }
