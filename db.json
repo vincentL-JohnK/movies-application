@@ -9,6 +9,11 @@
       "title": "The Matrix",
       "rating": "3",
       "id": 4
+    },
+    {
+      "title": "",
+      "rating": null,
+      "id": 5
     }
   ]
 }
