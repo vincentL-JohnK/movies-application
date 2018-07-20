@@ -13,24 +13,6 @@ const {getMovies} = require('./api.js');
 
 const {deleteMovie} = require('./functions.js');
 
-// const deleteMovie = number => {
-//
-//     const url = `/api/movies/${number}`;
-//     const options = {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: "",
-//     };
-//     fetch(url, options)
-//         .then(response => response.json())
-//         .catch((error) => {
-//             alert('Oh no! Something went wrong.\nCheck the console for details.')
-//             console.log(error);
-//         })
-// }
-
 
 let editMe;
 const wrapper = movie => {
@@ -50,21 +32,21 @@ const displayMovies = () => {
     });
         // console.log('movies',moviesAry);
         return moviesAry;
-    }).then(movies =>
-    {
+    }).then(movies => {
+        createOptionList(movies);
         console.log('movies',movies);
         $('#movies').html("");
         movies.map(movie =>{
-        $('#movies').append(wrapper(movie));
-        $(`#deleteBtn${movie.id}`).click((e) => {
-            e.preventDefault();
-            deleteMovie(movie.id);
-            displayMovies();
-        });
+            $('#movies').append(wrapper(movie));
+            $(`#deleteBtn${movie.id}`).click((e) => {
+                e.preventDefault();
+                deleteMovie(movie.id);
+                displayMovies();
+            });
         })
     })
     .catch((error) => {
-        alert('Oh no! Something went wrong.\nCheck the console for details.')
+        alert('Oh no! Something went wrong.\nCheck the console for details.');
         console.log(error);
     });
 }
@@ -92,6 +74,41 @@ const addNew = () => {
         })
 };
 
+const editMovie = () => {
+    const movieToEdit = {title: $('#editTitle').val(), rating: $('#editRating').val()};
+    const idToEdit = $('#editID').val();
+    console.log(movieToEdit);
+    console.log(idToEdit);
+    const url = '/api/movies'+idToEdit;
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMovies),
+    }
+    fetch(url, options)
+        .then(response => response.json())
+        .catch((error) => {
+            alert('Oh no! Something went wrong.\nCheck the console for details.')
+            console.log(error);
+        })
+};
+// #editSelect, add children
+// <option disabled selected value></option>
+
+const createOptionList = (movies) => {
+    const editArray = [];
+    const editWrapper = movie => {
+         return `<option id="editBtn${movie.id}">${movie.string}</option>`;
+    };
+        $('#editSelect').append('<option disabled selected value>Select a movie to edit</option>');
+    movies.map( movie => {
+        $('#editSelect').append(editWrapper(movie))
+     });
+	console.log(editArray);
+};
+
 
 
 $('#postMovie').click((e)=>{
@@ -101,14 +118,10 @@ $('#postMovie').click((e)=>{
     displayMovies();
 });
 
-$('#editBtn').click((e)=>{
-    e.preventDefault();
-    addNew();
+$('#editMovie').click((e)=>{
     console.log('after click', getMovies());
-    displayMovies();
-});
-$('#deleteBtn').click((e)=>{
     e.preventDefault();
-    deleteMovie(4);
+    editMovie();
     displayMovies();
 });
+
