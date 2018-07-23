@@ -74,6 +74,7 @@ const addNew = () => {
         })
 };
 
+//needs completion
 const editMovie = () => {
     const movieToEdit = {title: $('#editTitle').val(), rating: $('#editRating').val()};
     const idToEdit = $('#editID').val();
