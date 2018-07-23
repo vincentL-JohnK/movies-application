@@ -3,17 +3,32 @@
     {
       "title": "Gone with the wind",
       "rating": "5",
-      "id": 3
+      "id": 1
     },
     {
       "title": "The Matrix",
       "rating": "3",
+      "id": 2
+    },
+    {
+      "title": "Cats",
+      "rating": 5,
+      "id": 3
+    },
+    {
+      "title": "Dogs",
+      "rating": 1,
       "id": 4
     },
     {
-      "title": "",
-      "rating": null,
+      "title": "Coding",
+      "rating": 5,
       "id": 5
+    },
+    {
+      "title": "Planking",
+      "rating": 1,
+      "id": 6
     }
   ]
 }
