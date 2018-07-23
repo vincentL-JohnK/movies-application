@@ -1,3 +1,5 @@
+const $ = require('jquery');
+
 module.exports = {
     deleteMovie: number => {
 
@@ -16,17 +18,16 @@ module.exports = {
                 console.log(error);
             })
     },
-    editMovie : () => {
-        const newMovies = {title: $('#title').val(), rating: $('#rating').val()};
-        console.log(newMovies);
-        const url = '/api/movies';
+    editMovie : (id) => {
+        const edited = {title: $('#editTitle').val(), rating: $('#editRating').val()};
+        const url = '/api/movies/'+id;
         const options = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(newMovies),
-        }
+            body: JSON.stringify(edited),
+        };
         fetch(url, options)
             .then(response => response.json())
             .catch((error) => {
